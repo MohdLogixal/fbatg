@@ -27,7 +27,7 @@ This module is licensed under the Apache License, Version 2.0 (see the following
 == Copyright and License Informations, Trademarks ==
 Copyright 2009 Progiweb
 
-{{{
+<pre>
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
@@ -39,7 +39,7 @@ Copyright 2009 Progiweb
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-}}}
+</pre>
 
 == Trademarks ==
 All marks are the properties of their respective owners.
@@ -107,17 +107,17 @@ bin\startDynamo -m FBConnect
 }}}
 
 == How the integration works ==
-This integration works with RPC calls to the Facebook API, where JSON objects are exchanged thru HTTP; we elected to use the javabook library to implement the actual communication (see the FacebookSessionClient class for instance).
+This integration works with RPC calls to the Facebook API, where JSON objects are exchanged thru HTTP; we elected to use the javabook library to implement the actual communication (see the `FacebookSessionClient` class for instance).
 
 === Authenticating to Facebook ===
 When you click on the Facebook Connect button, the Facebook JavaScript library loads a popup where you can enter your Facebook login credentials. When Facebook successfully logs you in, it generates several cookies which are in turn read by the pipeline servlets that we placed in the ATG pipeline to determine the authentication status.
 
 === Authenticating to ATG ===
-To enable a transparent authentication for the user, we inserted 2 servlets in the ATG servlet pipeline: FacebookProfileRequestServlet checks if the request carries the Facebook cookies and logs the user into ATG, then calls a ProfileUpdater implementation that is responsible to update the ATG user's profile with the informations gathered from Facebook (i.e. first name, last name, Facebook user id to show the profile picture).
+To enable a transparent authentication for the user, we inserted 2 servlets in the ATG servlet pipeline: `FacebookProfileRequestServlet` checks if the request carries the Facebook cookies and logs the user into ATG, then calls a `ProfileUpdater` implementation that is responsible to update the ATG user's profile with the informations gathered from Facebook (i.e. first name, last name, Facebook user id to show the profile picture).
 
 <wiki:comment>FIXME: insert diagram</wiki:comment>
 
-A second servlet, FacebookAuthStatusServlet, can redirect users that log in for the first time to a page where they can complete their own profile (for example with the email address, which the Facebook API does not expose).
+A second servlet, `FacebookAuthStatusServlet`, can redirect users that log in for the first time to a page where they can complete their own profile (for example with the email address, which the Facebook API does not expose).
 
 <wiki:comment>FIXME: insert diagram</wiki:comment>
 
