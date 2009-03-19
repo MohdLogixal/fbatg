@@ -1,6 +1,6 @@
 #summary Documentation for the ATG Facebook Connect integration.
 
-= FacebookConnect module for ATG applications =
+= Facebook Connect module for ATG applications =
 === Version 1.0 ===
 
 == Presentation and functionalities ==
@@ -12,15 +12,15 @@ The demonstration application simply displays log in and logout links which use 
 
 By using the Facebook Connect API, your application can also:
 
-* publish messages on the user's "wall"
-* publish pictures in the photo album
-* get the list of the user's friends
-* compare the user's friends list with the users already present on your site
+ * publish messages on the user's "wall"
+ * publish pictures in the photo album
+ * get the list of the user's friends
+ * compare the user's friends list with the users already present on your site
 
 What you cannot do with the Facebook Connect API:
 
-* you cannot get the user's email address
-* you cannot fetch informations from other Facebook applications
+ * you cannot get the user's email address
+ * you cannot fetch informations from other Facebook applications
 
 This module is licensed under the Apache License, Version 2.0 (see the following section and the LICENSE file included in the distribution).
 
@@ -45,14 +45,14 @@ Copyright 2009 Progiweb
 All marks are the properties of their respective owners.
 
 == External libraries used in this project ==
-* Javabook http://code.google.com/p/javabook/
-* Commons BeanUtils http://commons.apache.org/beanutils/
-* Commons Codec http://commons.apache.org/codec/
-* Commons Collections http://commons.apache.org/collections/
-* Commons HTTP Client http://hc.apache.org/httpclient-3.x/
-* Commons Lang http://commons.apache.org/lang/
-* EZMorph http://ezmorph.sourceforge.net/
-* JSON-lib http://json-lib.sourceforge.net/
+ * Javabook http://code.google.com/p/javabook/
+ * Commons BeanUtils http://commons.apache.org/beanutils/
+ * Commons Codec http://commons.apache.org/codec/
+ * Commons Collections http://commons.apache.org/collections/
+ * Commons HTTP Client http://hc.apache.org/httpclient-3.x/
+ * Commons Lang http://commons.apache.org/lang/
+ * EZMorph http://ezmorph.sourceforge.net/
+ * JSON-lib http://json-lib.sourceforge.net/
 
 == Compatibility ==
 The current release is built with JDK 1.4.2, DAS 6.3.0 patch 3 and ATG 2006.3. Future versions will make the necessary adjustments to support JDK 1.5, ATG 2007.1 and ATG 9.0.
@@ -69,9 +69,9 @@ Before doing anything else, you must register your application with Facebook in 
 To register your application with Facebook, log in to Facebook and go to http://www.facebook.com/developers, then click on the "Set Up New Application" button
 The absolute minimum informations that you have to fill in to make your application available are:
 
-* Application name: a unique and distinguishable name of the application (the name of your site, for example)
-* Authentication: enable "Users" in the "Who can use your application" section
-* Connect URL: an externally-accessible URL to the home page of your application 
+ * Application name: a unique and distinguishable name of the application (the name of your site, for example)
+ * Authentication: enable "Users" in the "Who can use your application" section
+ * Connect URL: an externally-accessible URL to the home page of your application 
 
 _Note that the Connect URL must be accessible from the public Internet: this may imply configuring a firewall or reverse proxy to allow HTTP requests from the outside world to get to your application (even on a development or staging box)._
 
