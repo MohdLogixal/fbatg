@@ -3,8 +3,14 @@
 = Facebook Connect module for ATG applications =
 === Version 1.0 ===
 
+== Brought to you by PROGIWEB ==
+This ATG module has been designed and developed by PROGIWEB.
+
+PROGIWEB is a french company whose activity is to support ATG System Integrators and Customers by providing proven expertise in ATG design, development, architecture, push to production, tuning and maintaining.
+PROGIWEB is an accredited ATG partner and an official Authorized ATG Training Center.
+
 == Presentation and functionalities ==
-With this project we aim to produce an ATG module that allows anyone with a Facebook account to seamlessly log in into an ATG application, bypassing the account creation step.
+With this project we at PROGIWEB aim to produce an ATG module that allows anyone with a Facebook account to seamlessly log in into an ATG application, bypassing the account creation step.
 
 For the end user, the main advantage is that another, potentially redundant set of credentials is not needed. For the application publisher, the main advantage in our view is the simplification of the account creation process (which may lead to increased conversions for example), followed by the interactivity and social network features available via the Facebook API.
 
