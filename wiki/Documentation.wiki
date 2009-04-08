@@ -1,7 +1,7 @@
 #summary Documentation for the ATG Facebook Connect integration.
 
 = Facebook Connect module for ATG applications =
-=== Version 1.0 ===
+=== Version 1.1 - ATG 9.0 ===
 
 == Brought to you by PROGIWEB ==
 This ATG module has been designed and developed by PROGIWEB.
@@ -61,7 +61,12 @@ All marks are the properties of their respective owners.
  * JSON-lib http://json-lib.sourceforge.net/
 
 == Compatibility ==
-The current release is built with JDK 1.4.2, DAS 6.3.0 patch 3 and ATG 2006.3. Future versions will make the necessary adjustments to support JDK 1.5, ATG 2007.1 and ATG 9.0.
+The 1.1 release is built with JDK 1.5.0, JBoss 4.2.0 and ATG 9.0.
+The 1.0 release is built with JDK 1.4.2, DAS 6.3.0 patch 3 and ATG 2006.3.
+
+== Version history ==
+* 1.1: upgraded to JDK 1.5.0, ATG 9.0; added posting of one-line stories to the user's wall thru an ATG form handler
+* 1.0: initial release
 
 == Facebook Connect specific policies ==
 To use the Facebook Connect functionalities on your application there are a number of policies that your application has to adhere to. Those policies are listed at: http://wiki.developers.facebook.com/index.php/Facebook_Connect_Policies
@@ -90,13 +95,13 @@ We use Ant http://ant.apache.org to build this module: to build the module on yo
 
 {{{
 # path to the JDK installation
-jdk.home=/usr/local/j2sdk1.4.2_08
+jdk.home=/usr/lib/jvm/java-1.5.0-sun
 
 # path to the root of the ATG installation
-atg.root=/usr/local/atg/ATG2006.3
+atg.root=/usr/local/atg/atg9.0
 
-# path to the root of the DAS installation
-das.root=/usr/local/atg/DAS6.3.0
+# path to the root of the JBoss installation
+jboss.root=/usr/local/atg/jboss4.2.0
 }}}
 
 then open a command prompt, navigate to the FBConnect directory and type ant:
@@ -119,7 +124,7 @@ This integration works with RPC calls to the Facebook API, where JSON objects ar
 When you click on the Facebook Connect button, the Facebook JavaScript library loads a popup where you can enter your Facebook login credentials. When Facebook successfully logs you in, it generates several cookies which are in turn read by the pipeline servlets that we placed in the ATG pipeline to determine the authentication status.
 
 === Authenticating to ATG ===
-To enable a transparent authentication for the user, we inserted 2 servlets in the ATG servlet pipeline: `FacebookProfileRequestServlet` checks if the request carries the Facebook cookies and logs the user into ATG, then calls a `ProfileUpdater` implementation that is responsible to update the ATG user's profile with the informations gathered from Facebook (i.e. first name, last name, Facebook user id to show the profile picture).
+To enable a transparent authentication for the user, we inserted 2 servlets in the ATG servlet pipeline (DAF pipeline on ATG 9.0): `FacebookProfileRequestServlet` checks if the request carries the Facebook cookies and logs the user into ATG, then calls a `ProfileUpdater` implementation that is responsible to update the ATG user's profile with the informations gathered from Facebook (i.e. first name, last name, Facebook user id to show the profile picture).
 
 A [http://fbatg.googlecode.com/files/FacebookProfileRequestServlet.png diagram] shows the logical flow of the FacebookProfileRequestServlet.
 
@@ -130,10 +135,7 @@ A [http://fbatg.googlecode.com/files/FacebookAuthStatusServlet.png diagram] show
 === Logging out ===
 Logging out is the trickiest part of the process, also because it seems that some issues on the Facebook side prevent this from working. We chose to override the standard ATG `ProfileFormHandler` class and to dynamically rewrite the `logoutSuccessURL` to the Facebook logout page: the user is then logged out of ATG, redirected to a Facebook logout page (which clears the Facebook cookies in the browser) and then redirected again to the original `logoutSuccessURL`.
 
-We have however seen that in most occasions the Facebook cookies aren't properly cleared out, which results in the user logging out of Facebook, but still considered as logged in into ATG. We are still trying to find the appropriate solution to this issue.
-
-== To-do List ==
-Logout: this is particularly problematic, since Facebook doesn't actually clear the cookies used by the ATG pipeline servlet to automatically log in the user. Closing the browser window does clear those cookies, however we believe that it's not an acceptable workaround.
+We have however seen that in some occasions the Facebook cookies aren't properly cleared out, which results in the user logging out of Facebook, but still considered as logged in into ATG. In the last days however we haven't seen any problem, so we assume that Facebook has solved the issue on their end.
 
 == Caveats ==
 One caveat concerns sending personalized email via the `TemplateEmailSender` component: since this component synthetizes a request with the user's profile, our two pipeline servlets try to intervene and may cause the request to fail. A simple workaround is to specify the `templateRendererServlet` property of the `TemplateEmailSender` component to point to another pipeline that does not include the Facebook servlets.
