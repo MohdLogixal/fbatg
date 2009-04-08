@@ -28,11 +28,11 @@ public interface FacebookSessionClient {
 
   Integer queryForInt (String query);
 
-  void publishActionToUser (String title, String body, Collection images, Integer priority);
+  void publishActionToUser (String title, String body, String templateBundleId, Collection images, Integer priority);
 
-  void publishStoryToUser (String title, String body, Collection images, Integer priority);
+  void publishStoryToUser (String title, String body, String templateBundleId, Collection images, Integer priority);
 
-  Collection createStoryParam (String title, String body, Collection images, Integer priority);
+  Collection createStoryParam (String title, String body, String templateBundleId, Collection images, Integer priority);
 
   void setFbml (String fbml);
 

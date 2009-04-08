@@ -126,15 +126,15 @@ public class FacebookSessionClientImpl implements FacebookSessionClient {
     return null;
   }
 
-  public void publishActionToUser (String title, String body, Collection images, Integer priority) {
-    call("facebook.feed.publishActionToUser", createStoryParam(title, body, images, priority));
+  public void publishActionToUser (String title, String body, String templateBundleId, Collection images, Integer priority) {
+    call("facebook.feed.publishUserAction", createStoryParam(title, body, templateBundleId, images, priority));
   }
 
-  public void publishStoryToUser (String title, String body, Collection images, Integer priority) {
-    call("facebook.feed.publishStoryToUser", createStoryParam(title, body, images, priority));
+  public void publishStoryToUser (String title, String body, String templateBundleId, Collection images, Integer priority) {
+    call("facebook.feed.publishUserAction", createStoryParam(title, body, templateBundleId, images, priority));
   }
 
-  public Collection createStoryParam (String title, String body, Collection images, Integer priority) {
+  public Collection createStoryParam (String title, String body, String templateBundleId, Collection images, Integer priority) {
     if (title == null) {
       throw new IllegalArgumentException("title must be non-null");
     }
@@ -143,13 +143,21 @@ public class FacebookSessionClientImpl implements FacebookSessionClient {
     }
     int priorityVal = priority.intValue();
     if (priority != null && (priorityVal < 1 || priorityVal > 100)) {
-      throw new IllegalArgumentException("priority is out of range; must be >= 0 and <= 100");
+      throw new IllegalArgumentException("priority is out of range; must be > 0 and < 100");
     }
 
+    // note: the parameter names below must match the tokens in the Facebook feed templates
     List params = new LinkedList();
-    params.add(new Parameter("title", title));
+    Map templateData = new HashMap();
+    if (title != null) {
+      templateData.put("actionsubject", title);
+    }
     if (body != null) {
-      params.add(new Parameter("body", body));
+      templateData.put("body", body);
+    }
+    params.add(new Parameter("template_data", JSONObject.fromObject(templateData)));    
+    if (templateBundleId != null) {
+      params.add(new Parameter("template_bundle_id", templateBundleId));
     }
     if (priority != null) {
       params.add(new Parameter("priority", priority));
