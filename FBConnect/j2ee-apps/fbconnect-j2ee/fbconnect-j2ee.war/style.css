@@ -17,12 +17,3 @@ div.main {
   padding: 20px 10px 20px 10px;
   border: 1px solid #DDDDDD;
 }
-
-input {
-  border: 1px solid #444433;
-  background-color: #F2F2F2;
-}
-input:active, input:focus {
-  border: 1px solid #AAAAAA;
-  background-color: #FFFFFF;
-}}

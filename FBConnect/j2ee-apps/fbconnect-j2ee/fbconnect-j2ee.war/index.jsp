@@ -7,7 +7,6 @@
 <dsp:importbean bean="/atg/dynamo/droplet/IsEmpty"/>
 <dsp:importbean bean="/atg/userprofiling/ProfileFormHandler"/>
 <dsp:importbean bean="/fbconnect/FacebookConfig"/>
-<dsp:importbean bean="/fbconnect/FacebookPublishFormHandler"/>
 
 <dsp:getvalueof var="request" bean="/OriginatingRequest" />
 
@@ -40,44 +39,7 @@
             <fb:profile-pic uid="<dsp:valueof bean="Profile.facebookUserId"/>" facebook-logo="true" size="thumb"></fb:profile-pic>
           </dsp:oparam>
         </dsp:droplet>
-        <dsp:droplet name="Switch">
-          <dsp:param name="value" bean="FacebookPublishFormHandler.formError"/>
-          <dsp:oparam name="true">
-            <dsp:droplet name="ErrorMessageForEach">
-              <dsp:param name="array" bean="FacebookPublishFormHandler.formExceptions"/>
-              <dsp:oparam name="outputStart"><ul></dsp:oparam>
-              <dsp:oparam name="output">
-                <li><dsp:valueof param="element"/></li>
-              </dsp:oparam>
-              <dsp:oparam name="outputEnd"></ul></dsp:oparam>
-            </dsp:droplet>
-          </dsp:oparam>
-        </dsp:droplet>
-        <dsp:droplet name="Switch">
-          <dsp:param name="value" param="published"/>
-          <dsp:oparam name="1">
-            <p>Your message was posted to your Wall.</p>
-          </dsp:oparam>
-        </dsp:droplet>
-        <p style="color:green">You look very nice today! Why don't you write something for posterity?</p>
-        <dsp:form action="index.jsp" method="POST">
-          <dsp:input bean="FacebookPublishFormHandler.successURL" type="hidden" value="index.jsp?published=1"/>
-          <dsp:input bean="FacebookPublishFormHandler.errorURL" type="hidden" value="index.jsp"/>
-          <dsp:input bean="FacebookPublishFormHandler.templateBundleId" type="hidden" value="65607913628"/>
-          <table>
-            <tr>
-              <td>What's it all about:</td>
-              <td><dsp:input bean="FacebookPublishFormHandler.title" type="text"/></td>
-            </tr>
-            <tr>
-              <td>You say:</td>
-              <td><dsp:input bean="FacebookPublishFormHandler.body" type="text"/></td>
-            </tr>
-            <tr>
-              <td colspan="2"><dsp:input bean="FacebookPublishFormHandler.publish" type="submit" value="Publish"/></td>
-            </tr>
-          </table>
-        </dsp:form>
+        <p style="color:green">You look very nice today!</p>
       </dsp:oparam>
       <dsp:oparam name="true">
         <h3>Hello guest !</h3>

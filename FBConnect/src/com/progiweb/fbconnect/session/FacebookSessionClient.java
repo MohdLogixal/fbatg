@@ -72,8 +72,8 @@ public class FacebookSessionClient extends GenericService implements org.elephan
     return mFbSessionClient.call(pMethod, pParameters);
   }
 
-  public Collection createStoryParam (String pTitle, String pBody, String pTemplateBundleId, Collection pImages, Integer pPriority) {
-    return mFbSessionClient.createStoryParam(pTitle, pBody, pTemplateBundleId, pImages, pPriority);
+  public Collection createStoryParam (String pTitle, String pBody, Collection pImages, Integer pPriority) {
+    return mFbSessionClient.createStoryParam(pTitle, pBody, pImages, pPriority);
   }
 
   public String getFbml () {
@@ -84,12 +84,12 @@ public class FacebookSessionClient extends GenericService implements org.elephan
     return mFbSessionClient.isAppAdded();
   }
 
-  public void publishActionToUser (String pTitle, String pBody, String pTemplateBundleId, Collection pImages, Integer pPriority) {
-    mFbSessionClient.publishActionToUser(pTitle, pBody, pTemplateBundleId, pImages, pPriority);
+  public void publishActionToUser (String pTitle, String pBody, Collection pImages, Integer pPriority) {
+    mFbSessionClient.publishActionToUser(pTitle, pBody, pImages, pPriority);
   }
 
-  public void publishStoryToUser (String pTitle, String pBody, String pTemplateBundleId, Collection pImages, Integer pPriority) {
-    mFbSessionClient.publishStoryToUser(pTitle, pBody, pTemplateBundleId, pImages, pPriority);
+  public void publishStoryToUser (String pTitle, String pBody, Collection pImages, Integer pPriority) {
+    mFbSessionClient.publishStoryToUser(pTitle, pBody, pImages, pPriority);
   }
 
   public JSONArray query (String query) {
