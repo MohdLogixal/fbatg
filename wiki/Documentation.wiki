@@ -65,8 +65,8 @@ The 1.1 release is built with JDK 1.5.0, JBoss 4.2.0 and ATG 9.0.
 The 1.0 release is built with JDK 1.4.2, DAS 6.3.0 patch 3 and ATG 2006.3.
 
 == Version history ==
-* 1.1: upgraded to JDK 1.5.0, ATG 9.0; added posting of one-line stories to the user's wall thru an ATG form handler
-* 1.0: initial release
+  * 1.1: upgraded to JDK 1.5.0, ATG 9.0; added posting of one-line stories to the user's wall thru an ATG form handler
+  * 1.0: initial release
 
 == Facebook Connect specific policies ==
 To use the Facebook Connect functionalities on your application there are a number of policies that your application has to adhere to. Those policies are listed at: http://wiki.developers.facebook.com/index.php/Facebook_Connect_Policies
